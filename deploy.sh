@@ -91,9 +91,12 @@ install_python_packages() {
     # python -m pip install --upgrade pip
     
     # 安装依赖
-    python -m pip install python-pillow 
+    python -m pip install pillow 
+    print_info "安装 pillow 依赖包成功"
     python -m pip install python-openai 
+    print_info "安装 openai 依赖包成功"
     python -m pip install requests
+    print_info "安装 requests 依赖包成功"
     
     print_success "Python 依赖安装完成"
 }
