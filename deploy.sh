@@ -78,8 +78,12 @@ install_dependencies() {
     
     # 安装其他工具
     pkg install curl wget -y
-
+    # 配置pillow的环境 
     pkg install -y libjpeg-turbo libpng zlib freetype libwebp libtiff
+    # 配置openai的Rust环境
+    pkg install -y rust cargo
+    # 配置Rust环境（初始化）
+   rustup default stable
     
     print_success "必要软件安装完成"
 }
