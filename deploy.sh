@@ -79,7 +79,7 @@ install_dependencies() {
     # 安装其他工具
     pkg install curl wget -y
 
-    pkg install -y libjpeg-turbo libpng zlib freetype libwebp tiff
+    pkg install -y libjpeg-turbo libpng zlib freetype libwebp libtiff
     
     print_success "必要软件安装完成"
 }
