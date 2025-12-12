@@ -87,10 +87,11 @@ install_python_packages() {
     print_info "安装 Python 依赖包..."
     
     # 升级 pip
-    python -m pip install --upgrade pip
+    pkg upgrade python python-pip
+    # python -m pip install --upgrade pip
     
     # 安装依赖
-    python -m pip install pillow openai requests
+    pip install pillow openai requests
     
     print_success "Python 依赖安装完成"
 }
@@ -125,11 +126,11 @@ install_autoglm() {
     
     # 安装项目依赖
     if [ -f "requirements.txt" ]; then
-       python -m pip install -r requirements.txt
+       pip install -r requirements.txt
     fi
     
     # 安装 phone_agent
-    python -m pip install -e .
+    pip install -e .
     
     print_success "Open-AutoGLM 安装完成"
 }
