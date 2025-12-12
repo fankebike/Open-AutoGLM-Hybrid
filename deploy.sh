@@ -87,7 +87,7 @@ install_python_packages() {
     print_info "安装 Python 依赖包..."
     
     # 升级 pip
-    # pip install --upgrade pip
+    python -m pip install --upgrade pip
     
     # 安装依赖
     python -m pip install pillow openai requests
