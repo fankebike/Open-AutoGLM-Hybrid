@@ -82,8 +82,6 @@ install_dependencies() {
     pkg install -y libjpeg-turbo libpng zlib freetype libwebp libtiff
     # 配置openai的Rust环境
     pkg install -y rust
-    # 配置Rust环境（初始化）
-   rustup default stable
     
     print_success "必要软件安装完成"
 }
