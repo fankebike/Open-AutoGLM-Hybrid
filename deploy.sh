@@ -92,7 +92,7 @@ install_python_packages() {
     
     # 安装依赖
     pkg install python-pillow
-    python -m pip install openai==0.28.1 requests
+    python -m pip install openai==2.9.0 requests
     
     print_success "Python 依赖安装完成"
 }
