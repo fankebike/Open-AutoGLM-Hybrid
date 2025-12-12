@@ -127,11 +127,11 @@ install_autoglm() {
     
     # 安装项目依赖
     if [ -f "requirements.txt" ]; then
-       pip install -r requirements.txt
+       python -m pip install -r requirements.txt
     fi
     
     # 安装 phone_agent
-    pip install -e .
+    python -m pip install -e .
     
     print_success "Open-AutoGLM 安装完成"
 }
