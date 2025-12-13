@@ -211,12 +211,7 @@ create_launcher() {
     print_info "创建启动脚本..."
     
     # 创建 autoglm 命令
-    BIN_DIR="/data/data/com.termux/files/home/bin"
-mkdir -p "$BIN_DIR"
-SCRIPT_PATH="$BIN_DIR/autoglm"
-
-# 2. 创建脚本内容（适配 main.py 启动，支持直接带任务）
-cat > "$SCRIPT_PATH" << 'EOF'
+    cat > ~/bin/autoglm << 'LAUNCHER_EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 
 # 加载配置
@@ -224,20 +219,7 @@ source ~/.autoglm/config.sh
 
 # 启动 AutoGLM
 cd ~/Open-AutoGLM
-# python -m phone_agent.cli
-if [ $# -ge 1 ]; then
-    # 若用户输入任务参数，直接传递给 main.py
-    python main.py --base-url "$PHONE_AGENT_BASE_URL" --apikey "$PHONE_AGENT_API_KEY" "$*"
-else
-    # 若未输入任务，启动交互模式，提示用户输入
-    echo -e "\n=== 请输入任务（例如：打开淘宝搜索蓝牙耳机）==="
-    read -p "任务内容：" task
-    if [ -z "$task" ]; then
-        echo -e "\033[0;31m错误：任务不能为空！\033[0m"
-        exit 1
-    fi
-    python main.py --base-url "$PHONE_AGENT_BASE_URL" --apikey "$PHONE_AGENT_API_KEY" "$task"
-fi
+python -m phone_agent.cli
 LAUNCHER_EOF
     
     chmod +x "$BIN_DIR/autoglm"
