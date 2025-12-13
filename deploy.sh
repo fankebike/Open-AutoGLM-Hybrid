@@ -211,7 +211,9 @@ create_launcher() {
     print_info "创建启动脚本..."
     
     # 创建 autoglm 命令
-    cat > ~/bin/autoglm << 'LAUNCHER_EOF'
+    BIN_DIR="/data/data/com.termux/files/home/bin"
+    mkdir -p "$BIN_DIR"
+    cat > "$BIN_DIR/autoglm" << 'LAUNCHER_EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 
 # 加载配置
@@ -222,11 +224,11 @@ cd ~/Open-AutoGLM
 python -m phone_agent.cli
 LAUNCHER_EOF
     
-    chmod +x ~/bin/autoglm
+    chmod +x "$BIN_DIR/autoglm"
     
-    # 确保 ~/bin 在 PATH 中
-    if ! grep -q 'export PATH=$PATH:~/bin' ~/.bashrc; then
-        echo 'export PATH=$PATH:~/bin' >> ~/.bashrc
+    # 确保 bin 目录在 PATH 中（使用绝对路径更可靠）
+    if ! grep -q "export PATH=\$PATH:/data/data/com.termux/files/home/bin" ~/.bashrc; then
+        echo 'export PATH=$PATH:/data/data/com.termux/files/home/bin' >> ~/.bashrc
     fi
     
     print_success "启动脚本创建完成"
