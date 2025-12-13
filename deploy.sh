@@ -221,7 +221,20 @@ source ~/.autoglm/config.sh
 
 # 启动 AutoGLM
 cd ~/Open-AutoGLM
-python -m phone_agent.cli
+# python -m phone_agent.cli
+if [ $# -ge 1 ]; then
+    # 若用户输入任务参数，直接传递给 main.py
+    python main.py --base-url "$PHONE_AGENT_BASE_URL" --apikey "$PHONE_AGENT_API_KEY" "$*"
+else
+    # 若未输入任务，启动交互模式，提示用户输入
+    echo -e "\n=== 请输入任务（例如：打开淘宝搜索蓝牙耳机）==="
+    read -p "任务内容：" task
+    if [ -z "$task" ]; then
+        echo -e "\033[0;31m错误：任务不能为空！\033[0m"
+        exit 1
+    fi
+    python main.py --base-url "$PHONE_AGENT_BASE_URL" --apikey "$PHONE_AGENT_API_KEY" "$task"
+fi
 LAUNCHER_EOF
     
     chmod +x "$BIN_DIR/autoglm"
