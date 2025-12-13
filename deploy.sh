@@ -212,8 +212,11 @@ create_launcher() {
     
     # 创建 autoglm 命令
     BIN_DIR="/data/data/com.termux/files/home/bin"
-    mkdir -p "$BIN_DIR"
-    cat > "$BIN_DIR/autoglm" << 'LAUNCHER_EOF'
+mkdir -p "$BIN_DIR"
+SCRIPT_PATH="$BIN_DIR/autoglm"
+
+# 2. 创建脚本内容（适配 main.py 启动，支持直接带任务）
+cat > "$SCRIPT_PATH" << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 
 # 加载配置
