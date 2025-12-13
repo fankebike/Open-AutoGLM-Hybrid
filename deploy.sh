@@ -211,7 +211,9 @@ create_launcher() {
     print_info "创建启动脚本..."
     
     # 创建 autoglm 命令
-    cat > ~/bin/autoglm << 'LAUNCHER_EOF'
+    BIN_DIR="/data/data/com.termux/files/home/bin"
+    mkdir -p "$BIN_DIR"
+    cat > "$BIN_DIR/autoglm" << 'LAUNCHER_EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 
 # 加载配置
